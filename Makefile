@@ -1,5 +1,4 @@
 .PHONY: setup bootstrap update-submodules
-SUBMODULES_BUNDLES=bundle/vim-powerline bundle/ctrlp.vim bundle/ack.vim bundle/vim-bundle-python bundle/vim-markdown
 SUBMODULES_INIT=.init/vim-powerline .init/ctrlp.vim .init/ack.vim .init/vim-bundle-python bundle/vim-markdown
 
 setup: update-submodules vimrc gvimrc
@@ -11,10 +10,8 @@ setup: update-submodules vimrc gvimrc
 .init:
 	@install -d ./.init
 
-update-submodules: .init $(SUBMODULE_BUNDLES) $(SUBMODULES_INIT)
+update-submodules: .init $(SUBMODULES_INIT)
 	git submodule update
-
-init-submodules: $(SUBMODULE_BUNDLES)
 
 bundle/vim-powerline:
 	git submodule add https://github.com/Lokaltog/vim-powerline.git $@
@@ -51,5 +48,5 @@ bundle/vim-markdown:
 	git submodule init
 	touch $@
 
-bootstrap: $(SUBMODULE_BUNDLES) update-submodules
+bootstrap: update-submodules
 	@echo "bootstrapping submodules"
