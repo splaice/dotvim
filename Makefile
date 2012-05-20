@@ -2,8 +2,8 @@
 SUBMODULES_INIT=.init/vim-powerline .init/ctrlp.vim .init/ack.vim .init/vim-bundle-python bundle/vim-markdown
 
 setup: update-submodules vimrc gvimrc
-	rm ~/.vimrc
-	rm ~/.gvimrc
+	test -f ~/.vimrc && rm ~/.vimrc || true
+	test -f ~/.gvimrc && rm ~/.gvimrc || true
 	ln -s ~/.vim/vimrc ~/.vimrc
 	ln -s ~/.vim/gvimrc ~/.gvimrc
 
