@@ -1,5 +1,8 @@
 .PHONY: setup bootstrap update-submodules
-SUBMODULES_INIT=.init/vim-powerline .init/ctrlp.vim .init/ack.vim .init/vim-bundle-python bundle/vim-markdown .init/vim-less
+SUBMODULES_INIT=.init/vim-powerline .init/ctrlp.vim .init/ack.vim \
+				.init/vim-bundle-python bundle/vim-markdown .init/vim-less \
+				.init/vim-javascript
+
 
 setup: update-submodules vimrc gvimrc
 	test -f ~/.vimrc && rm ~/.vimrc || true
@@ -52,6 +55,13 @@ bundle/vim-less:
 	git submodule add https://github.com/groenewege/vim-less.git $@
 
 .init/vim-less: .init bundle/vim-less
+	git submodule init
+	touch $@
+
+bundle/vim-javascript:
+	git submodule add https://github.com/pangloss/vim-javascript.git $@
+
+.init/vim-javascript: .init bundle/vim-javascript
 	git submodule init
 	touch $@
 
