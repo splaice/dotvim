@@ -110,3 +110,25 @@ let g:ctrlp_custom_ignore = {
   \ 'file': '\.exe$\|\.so$\|\.dll$',
   \ 'link': 'some_bad_symbolic_links',
   \ }
+
+" Yank text to the OS X clipboard
+noremap <leader>y "*y
+noremap <leader>yy "*Y
+
+" Preserve indentation while pasting text from the OS X clipboard
+noremap <leader>p :set paste<CR>:put  *<CR>:set nopaste<CR>
+
+" Prompt for a command to run
+ map rp :PromptVimTmuxCommand
+
+" Run last command executed by RunVimTmuxCommand
+map rl :RunLastVimTmuxCommand
+
+" Inspect runner pane
+map ri :InspectVimTmuxRunner
+
+" Close all other tmux panes in current window
+map rx :CloseVimTmuxPanes
+
+" Interrupt any command running in the runner pane
+map rs :InterruptVimTmuxRunner
