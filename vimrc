@@ -54,7 +54,9 @@ set modelines=10
 set nofoldenable
 
 " Set colorscheme
-colorscheme Tomorrow-Night-Eighties
+"colorscheme Tomorrow-Night-Eighties
+"colorscheme jellybeans
+colorscheme molokai
 
 " Opens an edit command with the path of the currently edited file filled in
 " Normal mode: <Leader>e
