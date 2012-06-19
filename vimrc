@@ -111,24 +111,14 @@ let g:ctrlp_custom_ignore = {
   \ 'link': 'some_bad_symbolic_links',
   \ }
 
-" Yank text to the OS X clipboard
-noremap <leader>y "*y
-noremap <leader>yy "*Y
+" nerdtree
+nmap <leader>\ :NERDTreeToggle<CR>
 
-" Preserve indentation while pasting text from the OS X clipboard
-noremap <leader>p :set paste<CR>:put  *<CR>:set nopaste<CR>
+" conque terminal
+nmap <leader>t :ConqueTermSplit bash<CR>
 
-" Prompt for a command to run
- map rp :PromptVimTmuxCommand
+" vertical split
+nmap <leader>v :vsplit<CR>
 
-" Run last command executed by RunVimTmuxCommand
-map rl :RunLastVimTmuxCommand
-
-" Inspect runner pane
-map ri :InspectVimTmuxRunner
-
-" Close all other tmux panes in current window
-map rx :CloseVimTmuxPanes
-
-" Interrupt any command running in the runner pane
-map rs :InterruptVimTmuxRunner
+" horizontal split
+nmap <leader>h :split<CR>
