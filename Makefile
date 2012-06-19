@@ -1,7 +1,8 @@
 .PHONY: setup bootstrap update-submodules
 SUBMODULES_INIT=.init/vim-powerline .init/ctrlp.vim .init/ack.vim \
 				.init/vim-bundle-python bundle/vim-markdown .init/vim-less \
-				.init/vim-javascript .init/vim-vimux .init/nerdtree
+				.init/vim-javascript .init/vim-vimux .init/nerdtree \
+				.init/vim-conque
 
 setup: update-submodules vimrc gvimrc
 	test -f ~/.vimrc && rm ~/.vimrc || true
@@ -75,6 +76,13 @@ bundle/nerdtree:
 	git submodule add https://github.com/scrooloose/nerdtree.git $@
 
 .init/nerdtree: .init bundle/nerdtree
+	git submodule init
+	touch $@
+
+bundle/vim-conque:
+	git submodule add git@github.com:splaice/vim-conque.git $@
+
+.init/vim-conque: .init bundle/vim-conque
 	git submodule init
 	touch $@
 
