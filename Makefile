@@ -1,7 +1,7 @@
 .PHONY: setup bootstrap update-submodules
 SUBMODULES_INIT=.init/vim-powerline .init/ctrlp.vim .init/ack.vim \
 				.init/vim-bundle-python bundle/vim-markdown .init/vim-less \
-				.init/vim-javascript .init/vim-vimux
+				.init/vim-javascript .init/vim-vimux .init/nerdtree
 
 setup: update-submodules vimrc gvimrc
 	test -f ~/.vimrc && rm ~/.vimrc || true
@@ -68,6 +68,13 @@ bundle/vim-vimux:
 	git submodule add https://github.com/benmills/vimux.git $@
 
 .init/vim-vimux: .init bundle/vim-vimux
+	git submodule init
+	touch $@
+
+bundle/nerdtree:
+	git submodule add https://github.com/scrooloose/nerdtree.git $@
+
+.init/nerdtree: .init bundle/nerdtree
 	git submodule init
 	touch $@
 
