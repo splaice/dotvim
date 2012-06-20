@@ -2,7 +2,7 @@
 SUBMODULES_INIT=.init/vim-powerline .init/ctrlp.vim .init/ack.vim \
 				.init/vim-bundle-python bundle/vim-markdown .init/vim-less \
 				.init/vim-javascript .init/vim-vimux .init/nerdtree \
-				.init/vim-conque
+				.init/vim-conque .init/webapi-vim .init/gist-vim
 
 setup: update-submodules vimrc gvimrc
 	test -f ~/.vimrc && rm ~/.vimrc || true
@@ -83,6 +83,20 @@ bundle/vim-conque:
 	git submodule add git@github.com:splaice/vim-conque.git $@
 
 .init/vim-conque: .init bundle/vim-conque
+	git submodule init
+	touch $@
+
+bundle/webapi-vim:
+	git submodule add https://github.com/mattn/webapi-vim.git $@
+
+.init/webapi-vim: .init bundle/webapi-vim
+	git submodule init
+	touch $@
+
+bundle/gist-vim:
+	git submodule add https://github.com/mattn/gist-vim.git $@
+
+.init/gist-vim: .init bundle/gist-vim
 	git submodule init
 	touch $@
 
