@@ -122,3 +122,6 @@ nmap <leader>v :vsplit<CR>
 
 " horizontal split
 nmap <leader>h :split<CR>
+
+" reload file
+nmap <leader>r :edit<CR>
