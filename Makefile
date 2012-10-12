@@ -2,7 +2,8 @@
 SUBMODULES_INIT=.init/vim-powerline .init/ctrlp.vim .init/ack.vim \
 				.init/vim-bundle-python bundle/vim-markdown .init/vim-less \
 				.init/vim-javascript .init/vim-vimux .init/nerdtree \
-				.init/vim-conque .init/webapi-vim .init/gist-vim .init/lusty-vim
+				.init/vim-conque .init/webapi-vim .init/gist-vim .init/lusty-vim \
+				.init/syntastic
 
 setup: update-submodules vimrc gvimrc
 	test -f ~/.vimrc && rm ~/.vimrc || true
@@ -104,6 +105,13 @@ bundle/lusty-vim:
 	git submodule add https://github.com/sjbach/lusty.git $@
 
 .init/lusty-vim: .init bundle/lusty-vim
+	git submodule init
+	touch $@
+
+bundle/syntastic:
+	git submodule add https://github.com/scrooloose/syntastic.git $@
+
+.init/syntastic: .init bundle/syntastic
 	git submodule init
 	touch $@
 

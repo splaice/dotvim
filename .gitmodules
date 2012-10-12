@@ -37,3 +37,6 @@
 [submodule "bundle/lusty-vim"]
 	path = bundle/lusty-vim
 	url = https://github.com/sjbach/lusty.git
+[submodule "bundle/syntastic"]
+	path = bundle/syntastic
+	url = https://github.com/scrooloose/syntastic.git
