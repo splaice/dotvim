@@ -17,3 +17,5 @@ set guioptions-=T
 
 " Highlight cursorline
 set cursorline
+
+highlight ColorColumn guibg=Black
