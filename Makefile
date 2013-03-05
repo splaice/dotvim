@@ -3,7 +3,7 @@ SUBMODULES_INIT=.init/vim-powerline .init/ctrlp.vim .init/ack.vim \
 				.init/vim-bundle-python bundle/vim-markdown .init/vim-less \
 				.init/vim-javascript .init/vim-vimux .init/nerdtree \
 				.init/vim-conque .init/webapi-vim .init/gist-vim .init/lusty-vim \
-				.init/syntastic
+				.init/syntastic .init/vim-gitgutter .init/vim-fugitive
 
 setup: update-submodules vimrc gvimrc
 	test -f ~/.vimrc && rm ~/.vimrc || true
@@ -112,6 +112,20 @@ bundle/syntastic:
 	git submodule add https://github.com/scrooloose/syntastic.git $@
 
 .init/syntastic: .init bundle/syntastic
+	git submodule init
+	touch $@
+
+bundle/vim-gitgutter:
+	git submodule add git://github.com/airblade/vim-gitgutter.git $@
+
+.init/vim-gitgutter: .init bundle/vim-gitgutter
+	git submodule init
+	touch $@
+
+bundle/vim-fugitive:
+	git submodule add git://github.com/tpope/vim-fugitive.git $@
+
+.init/vim-fugitive: .init bundle/vim-fugitive
 	git submodule init
 	touch $@
 
