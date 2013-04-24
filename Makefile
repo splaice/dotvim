@@ -1,9 +1,9 @@
-.PHONY: setup bootstrap update-submodules
+.PHONY: setup bootstrap update-submodules pull-submodules
 SUBMODULES_INIT=.init/vim-powerline .init/ctrlp.vim .init/ack.vim \
 				.init/vim-bundle-python bundle/vim-markdown .init/vim-less \
 				.init/vim-javascript .init/vim-vimux .init/nerdtree \
 				.init/vim-conque .init/webapi-vim .init/gist-vim .init/lusty-vim \
-				.init/syntastic .init/vim-gitgutter .init/vim-fugitive
+				.init/syntastic .init/vim-gitgutter .init/vim-fugitive .init/vim-flake8
 
 setup: update-submodules vimrc gvimrc
 	test -f ~/.vimrc && rm ~/.vimrc || true
@@ -16,6 +16,9 @@ setup: update-submodules vimrc gvimrc
 
 update-submodules: .init $(SUBMODULES_INIT)
 	git submodule update
+
+pull-submodules: .init $(SUBMODULES_INIT)
+	git submodule foreach "(git checkout master; git pull origin master)"
 
 bundle/vim-powerline:
 	git submodule add https://github.com/Lokaltog/vim-powerline.git $@
@@ -126,6 +129,13 @@ bundle/vim-fugitive:
 	git submodule add git://github.com/tpope/vim-fugitive.git $@
 
 .init/vim-fugitive: .init bundle/vim-fugitive
+	git submodule init
+	touch $@
+
+bundle/vim-flake8:
+	git submodule add https://github.com/nvie/vim-flake8.git $@
+
+.init/vim-flake8: .init bundle/vim-flake8
 	git submodule init
 	touch $@
 
