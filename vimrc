@@ -100,7 +100,7 @@ au BufNewFile,BufRead *.json set ft=javascript
 au FileType python set softtabstop=4 tabstop=4 shiftwidth=4 textwidth=79 colorcolumn=80
 
 " html
-au BufRead,BufNewFile *.html set softtabstop=2 tabstop=2 shiftwidth=2
+au BufRead,BufNewFile *.html set softtabstop=4 tabstop=4 shiftwidth=4
 
 " ctrl+p config
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.egg-info
@@ -110,6 +110,7 @@ let g:ctrlp_custom_ignore = {
   \ 'file': '\.exe$\|\.so$\|\.dll$',
   \ 'link': 'some_bad_symbolic_links',
   \ }
+let g:ctrlp_match_window_bottom = 0
 
 " nerdtree
 nmap <leader>\ :NERDTreeToggle<CR>
@@ -123,5 +124,40 @@ nmap <leader>v :vsplit<CR>
 " horizontal split
 nmap <leader>h :split<CR>
 
+" Some split changes based on
+" http://robots.thoughtbot.com/post/48275867281/vim-splits-move-faster-and-more-naturally
+
+" split navigation
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+" More natural split opening
+set splitbelow
+set splitright
+
+" Resizing splits
+" Max out the height of the current split
+"ctrl + w _
+
+" Max out the width of the current split
+"ctrl + w |
+
+" Normalize all split sizes, which is very handy when resizing terminal
+"ctrl + w =
+
+" Swap top/bottom or left/right split
+"Ctrl+W R
+
+" Break out current window into a new tabview
+"Ctrl+W T
+
+" Close every window in the current tabview but the current one
+"Ctrl+W o
+
 " reload file
 nmap <leader>r :edit<CR>
+
+" run flake8 on save
+autocmd BufWritePost *.py call Flake8()
