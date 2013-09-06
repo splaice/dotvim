@@ -4,7 +4,7 @@ SUBMODULES_INIT=.init/vim-powerline .init/ctrlp.vim .init/ack.vim \
 				.init/vim-javascript .init/vim-vimux .init/nerdtree \
 				.init/vim-conque .init/webapi-vim .init/gist-vim .init/lusty-vim \
 				.init/syntastic .init/vim-gitgutter .init/vim-fugitive .init/vim-flake8 \
-				.init/salt-vim
+				.init/salt-vim .init/vim-colors-solarized
 
 setup: update-submodules vimrc gvimrc
 	test -f ~/.vimrc && rm ~/.vimrc || true
@@ -144,6 +144,13 @@ bundle/salt-vim:
 	git submodule add https://github.com/saltstack/salt-vim.git $@
 
 .init/salt-vim: .init bundle/salt-vim
+	git submodule init
+	touch $@
+
+bundle/vim-colors-solarized:
+	git submodule add https://github.com/altercation/vim-colors-solarized.git $@
+
+.init/vim-colors-solarized: .init bundle/vim-colors-solarized
 	git submodule init
 	touch $@
 

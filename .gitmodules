@@ -52,3 +52,6 @@
 [submodule "bundle/salt-vim"]
 	path = bundle/salt-vim
 	url = https://github.com/saltstack/salt-vim.git
+[submodule "bundle/vim-colors-solarized"]
+	path = bundle/vim-colors-solarized
+	url = https://github.com/altercation/vim-colors-solarized.git

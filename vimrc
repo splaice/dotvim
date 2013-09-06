@@ -56,7 +56,15 @@ set nofoldenable
 " Set colorscheme
 "colorscheme Tomorrow-Night-Eighties
 "colorscheme jellybeans
-colorscheme molokai
+"colorscheme molokai
+
+if has('gui_running')
+    set background=dark
+    colorscheme solarized
+else
+    set background=dark
+    colorscheme molokai
+endif
 
 " Opens an edit command with the path of the currently edited file filled in
 " Normal mode: <Leader>e
