@@ -122,6 +122,7 @@ let g:ctrlp_match_window_bottom = 0
 
 " nerdtree
 nmap <leader>\ :NERDTreeToggle<CR>
+let NERDTreeIgnore = ['\.pyc$']
 
 " conque terminal
 nmap <leader>t :ConqueTermSplit bash<CR>
