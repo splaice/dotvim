@@ -60,7 +60,7 @@ set nofoldenable
 
 if has('gui_running')
     set background=dark
-    colorscheme solarized
+    colorscheme jellybeans
 else
     set background=dark
     colorscheme molokai
@@ -119,6 +119,7 @@ let g:ctrlp_custom_ignore = {
   \ 'link': 'some_bad_symbolic_links',
   \ }
 let g:ctrlp_match_window_bottom = 0
+nmap <C-B> :CtrlPBuffer<CR>
 
 " nerdtree
 nmap <leader>\ :NERDTreeToggle<CR>
@@ -170,3 +171,6 @@ nmap <leader>r :edit<CR>
 
 " run flake8 on save
 autocmd BufWritePost *.py call Flake8()
+
+" show existing marks
+nmap <leader>m :marks<CR>
