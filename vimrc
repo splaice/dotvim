@@ -110,6 +110,9 @@ au FileType python set softtabstop=4 tabstop=4 shiftwidth=4 textwidth=79 colorco
 " html
 au BufRead,BufNewFile *.html set softtabstop=4 tabstop=4 shiftwidth=4
 
+" yaml
+au BufNewFile,BufRead *.yaml,*.yml so ~/.vim/syntax/yaml.vim
+
 " ctrl+p config
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.egg-info
 let g:ctrlp_working_path_mode = 2
