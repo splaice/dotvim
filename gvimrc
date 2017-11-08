@@ -4,7 +4,7 @@ if filereadable(expand("~/.vimrc"))
 endif
 
 " Set our font
-set guifont=Envy\ Code\ R:h20
+set guifont=Monaco:h13
 
 " Remove right scrollbar
 set guioptions-=r
