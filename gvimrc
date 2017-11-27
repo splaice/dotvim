@@ -4,7 +4,14 @@ if filereadable(expand("~/.vimrc"))
 endif
 
 " Set our font
-set guifont=Monaco:h13
+if has("unix")
+    let s:uname = system("uname -s")
+    if s:uname == "Darwin"
+        set guifont=Monaco:h13
+    else
+        set guifont=Ubuntu\ Mono\ 14
+    endif
+endif
 
 " Remove right scrollbar
 set guioptions-=r
