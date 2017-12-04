@@ -181,3 +181,7 @@ nmap <leader>m :marks<CR>
 " 80 col marker
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 match OverLength /\%81v.\+/
+
+" backupdir
+set backupdir=$HOME/.vim/tmp
+set directory=$HOME/.vim/tmp
