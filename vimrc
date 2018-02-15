@@ -172,9 +172,6 @@ set splitright
 " reload file
 nmap <leader>r :edit<CR>
 
-" run flake8 on save
-autocmd BufWritePost *.py call Flake8()
-
 " show existing marks
 nmap <leader>m :marks<CR>
 
