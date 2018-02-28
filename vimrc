@@ -101,14 +101,19 @@ au BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn} call s:setupMarkup()
 
 " add json syntax highlighting
 au BufNewFile,BufRead *.json set ft=javascript
+au BufRead,BufNewFile *.json set softtabstop=2 tabstop=2 shiftwidth=2
+
+" add json syntax highlighting
+au BufNewFile,BufRead *.js set ft=javascript
+au BufRead,BufNewFile *.js set softtabstop=2 tabstop=2 shiftwidth=2
 
 "au BufRead,BufNewFile *.txt call s:setupWrapping()
 
 " make Python follow PEP8 ( http://www.python.org/dev/peps/pep-0008/ )
-au FileType python set softtabstop=4 tabstop=4 shiftwidth=4 textwidth=79 colorcolumn=80
+au FileType python set softtabstop=4 tabstop=4 shiftwidth=4 textwidth=99 colorcolumn=100
 
 " html
-au BufRead,BufNewFile *.html set softtabstop=4 tabstop=4 shiftwidth=4
+au BufRead,BufNewFile *.html set softtabstop=2 tabstop=2 shiftwidth=2
 
 " yaml
 au BufNewFile,BufRead *.yaml,*.yml so ~/.vim/syntax/yaml.vim
@@ -175,10 +180,18 @@ nmap <leader>r :edit<CR>
 " show existing marks
 nmap <leader>m :marks<CR>
 
-" 80 col marker
-highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-match OverLength /\%81v.\+/
-
 " backupdir
 set backupdir=$HOME/.vim/tmp
 set directory=$HOME/.vim/tmp
+
+" syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let syntastic_mode_map = { 'passive_filetypes': ['html'] }
+let g:syntastic_python_flake8_args='--ignore=E501'

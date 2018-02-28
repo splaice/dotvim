@@ -1,3 +1,5 @@
 .init
 *.swp
 .netrwhist
+tmp
+tmp/*
