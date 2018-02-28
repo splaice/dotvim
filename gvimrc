@@ -3,16 +3,6 @@ if filereadable(expand("~/.vimrc"))
 	source ~/.vimrc
 endif
 
-" Set our font
-if has("unix")
-    let s:uname = system("uname -s")
-    if s:uname == "Darwin"
-        set guifont=Monaco:h13
-    else
-        set guifont=Ubuntu\ Mono\ 14
-    endif
-endif
-
 " Remove right scrollbar
 set guioptions-=r
 
@@ -25,4 +15,14 @@ set guioptions-=T
 " Highlight cursorline
 set cursorline
 
-highlight ColorColumn guibg=Black
+" Set our font
+set guifont=Menlo:h12
+
+" Set colorscheme for gui
+set background=dark
+colorscheme jellybeans
+
+" Include standard vim config
+if filereadable(expand("~/.vim/vimrc.local"))
+	source ~/.vim/vimrc.local
+endif

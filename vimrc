@@ -27,6 +27,7 @@ set list
 " Searching
 set hlsearch
 set incsearch
+
 "set ignorecase
 set smartcase
 
@@ -53,19 +54,6 @@ set modelines=10
 " Set no folding
 set nofoldenable
 
-" Set colorscheme
-"colorscheme Tomorrow-Night-Eighties
-"colorscheme jellybeans
-"colorscheme molokai
-
-if has('gui_running')
-    set background=dark
-    colorscheme jellybeans
-else
-    set background=dark
-    colorscheme molokai
-endif
-
 " Opens an edit command with the path of the currently edited file filled in
 " Normal mode: <Leader>e
 map <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
@@ -80,14 +68,16 @@ filetype plugin indent on
 " MacVIM shift+arrow-keys behavior (required in .vimrc)
 let macvim_hig_shift_movement = 1
 
-" gist-vim defaults
-if has("mac")
-  let g:gist_clip_command = 'pbcopy'
-elseif has("unix")
-  let g:gist_clip_command = 'xclip -selection clipboard'
-endif
-let g:gist_detect_filetype = 1
-let g:gist_open_browser_after_post = 1
+" syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let syntastic_mode_map = { 'passive_filetypes': ['html'] }
 
 " make uses real tabs
 au FileType make set noexpandtab
@@ -107,10 +97,9 @@ au BufRead,BufNewFile *.json set softtabstop=2 tabstop=2 shiftwidth=2
 au BufNewFile,BufRead *.js set ft=javascript
 au BufRead,BufNewFile *.js set softtabstop=2 tabstop=2 shiftwidth=2
 
-"au BufRead,BufNewFile *.txt call s:setupWrapping()
-
 " make Python follow PEP8 ( http://www.python.org/dev/peps/pep-0008/ )
 au FileType python set softtabstop=4 tabstop=4 shiftwidth=4 textwidth=99 colorcolumn=100
+let g:syntastic_python_flake8_args='--ignore=E501'
 
 " html
 au BufRead,BufNewFile *.html set softtabstop=2 tabstop=2 shiftwidth=2
@@ -132,9 +121,6 @@ nmap <C-B> :CtrlPBuffer<CR>
 " nerdtree
 nmap <leader>\ :NERDTreeToggle<CR>
 let NERDTreeIgnore = ['\.pyc$']
-
-" conque terminal
-nmap <leader>t :ConqueTermSplit bash<CR>
 
 " vertical split
 nmap <leader>v :vsplit<CR>
@@ -184,14 +170,8 @@ nmap <leader>m :marks<CR>
 set backupdir=$HOME/.vim/tmp
 set directory=$HOME/.vim/tmp
 
-" syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+" Set colorscheme
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let syntastic_mode_map = { 'passive_filetypes': ['html'] }
-let g:syntastic_python_flake8_args='--ignore=E501'
+set background=dark
+colorscheme molokai
+
