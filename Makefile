@@ -1,10 +1,16 @@
 .PHONY: setup bootstrap update-submodules pull-submodules
-SUBMODULES_INIT=.init/vim-powerline .init/ctrlp.vim .init/ack.vim \
-				.init/vim-bundle-python bundle/vim-markdown .init/vim-less \
-				.init/vim-javascript .init/vim-vimux .init/nerdtree \
-				.init/vim-conque .init/webapi-vim .init/gist-vim .init/lusty-vim \
-				.init/syntastic .init/vim-gitgutter .init/vim-fugitive \
-				.init/salt-vim .init/vim-colors-solarized .init/vim-airline
+SUBMODULES_INIT=.init/vim-powerline \
+				.init/ctrlp.vim \
+				.init/ack.vim \
+				.init/vim-bundle-python \
+				.init/vim-javascript \
+				.init/nerdtree \
+				.init/lusty-vim \
+				.init/syntastic \
+				.init/vim-gitgutter \
+				.init/vim-fugitive \
+				.init/vim-airline \
+				.init/awesome-vim-colorschemes
 
 setup: update-submodules vimrc gvimrc
 	test -f ~/.vimrc && rm ~/.vimrc || true
@@ -49,20 +55,6 @@ bundle/vim-bundle-python:
 	git submodule init
 	touch $@
 
-bundle/vim-markdown:
-	git submodule add https://github.com/tpope/vim-markdown.git $@
-
-.init/vim-markdown: .init bundle/vim-markdown
-	git submodule init
-	touch $@
-
-bundle/vim-less:
-	git submodule add https://github.com/groenewege/vim-less.git $@
-
-.init/vim-less: .init bundle/vim-less
-	git submodule init
-	touch $@
-
 bundle/vim-javascript:
 	git submodule add https://github.com/pangloss/vim-javascript.git $@
 
@@ -70,38 +62,10 @@ bundle/vim-javascript:
 	git submodule init
 	touch $@
 
-bundle/vim-vimux:
-	git submodule add https://github.com/benmills/vimux.git $@
-
-.init/vim-vimux: .init bundle/vim-vimux
-	git submodule init
-	touch $@
-
 bundle/nerdtree:
 	git submodule add https://github.com/scrooloose/nerdtree.git $@
 
 .init/nerdtree: .init bundle/nerdtree
-	git submodule init
-	touch $@
-
-bundle/vim-conque:
-	git submodule add git@github.com:splaice/vim-conque.git $@
-
-.init/vim-conque: .init bundle/vim-conque
-	git submodule init
-	touch $@
-
-bundle/webapi-vim:
-	git submodule add https://github.com/mattn/webapi-vim.git $@
-
-.init/webapi-vim: .init bundle/webapi-vim
-	git submodule init
-	touch $@
-
-bundle/gist-vim:
-	git submodule add https://github.com/mattn/gist-vim.git $@
-
-.init/gist-vim: .init bundle/gist-vim
 	git submodule init
 	touch $@
 
@@ -133,24 +97,17 @@ bundle/vim-fugitive:
 	git submodule init
 	touch $@
 
-bundle/salt-vim:
-	git submodule add https://github.com/saltstack/salt-vim.git $@
-
-.init/salt-vim: .init bundle/salt-vim
-	git submodule init
-	touch $@
-
-bundle/vim-colors-solarized:
-	git submodule add https://github.com/altercation/vim-colors-solarized.git $@
-
-.init/vim-colors-solarized: .init bundle/vim-colors-solarized
-	git submodule init
-	touch $@
-
 bundle/vim-airline:
 	git submodule add https://github.com/vim-airline/vim-airline.git $@
 
 .init/vim-airline: .init bundle/vim-airline
+	git submodule init
+	touch $@
+
+bundle/awesome-vim-colorschemes:
+	git submodule add https://github.com/rafi/awesome-vim-colorschemes.git $@
+
+.init/awesome-vim-colorschemes: .init bundle/awesome-vim-colorschemes
 	git submodule init
 	touch $@
 
